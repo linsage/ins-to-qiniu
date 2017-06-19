@@ -1,0 +1,46 @@
+/* 插件 */
+apply plugin: 'java'
+apply plugin: 'jetty'
+
+/*1.8环境*/
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+/*UTF-8 很重要*/
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    options.warnings = false
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7' //we want gradle 2.10 to run this project
+}
+
+buildscript {
+    repositories {
+        repositories { maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' } }
+    }
+}
+
+
+repositories {
+    repositories { maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' } }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.jfinal:jfinal:3.0"
+    compile "com.jfinal:jfinal-ext:3.1.4"
+    compile "com.jfinal:cos:26Dec2008"
+    compile "junit:junit:4.12"
+    compile "log4j:log4j:1.2.17"
+    compile "com.alibaba:fastjson:1.2.17"
+    compile "org.jsoup:jsoup:1.9.2"
+    compile "org.antlr:antlr4-runtime:4.6"
+    compile "com.google.guava:guava:19.0"
+    compile "com.qiniu:qiniu-java-sdk:7.2.+"
+    compile "org.eclipse.jetty:jetty-webapp:9.4.0.v20161208"
+    compile "net.sf.ehcache:ehcache:2.10.3"
+    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+}

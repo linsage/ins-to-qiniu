@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            overflowToDisk="true"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="300">
+    </defaultCache>
+
+
+    <!-- 存放用户图文信息（缓存6小时） -->
+    <cache name="userPhoto"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           overflowToDisk="true"
+           diskPersistent="true"
+           diskSpoolBufferSizeMB="50"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="21600"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off"
+    />
+</ehcache>
